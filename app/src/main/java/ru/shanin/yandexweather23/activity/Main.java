@@ -1,6 +1,7 @@
 package ru.shanin.yandexweather23.activity;
 
 import android.annotation.SuppressLint;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -49,40 +50,43 @@ public class Main extends AppCompatActivity {
 
     private void loadData() {
         refreshLayout.setRefreshing(true);
-        Call<String> call_get = service.getGetCityWeather_v2(
-                //APIConfigYandexWeather.KEY,
-                city.getLat(), city.getLon()
-        );
-        call_get.enqueue(new Callback<String>() {
-            @Override
-            public void onResponse(
-                    @NonNull Call<String> call,
-                    @NonNull Response<String> response
-            ) {
-                if (response.body() != null) {
-                    textView.setText(response.body());
+        AsyncTask.execute(() -> {
+            Call<String> call_get = service.getGetCityWeather_v1(
+                    APIConfigYandexWeather.KEY,
+                    city.getLat(), city.getLon()
+            );
+            call_get.enqueue(new Callback<String>() {
+                @Override
+                public void onResponse(
+                        @NonNull Call<String> call,
+                        @NonNull Response<String> response
+                ) {
+                    if (response.body() != null) {
+                        textView.setText(response.body());
+                        Toast.makeText(
+                                getApplicationContext(),
+                                response.body(),
+                                Toast.LENGTH_LONG
+                        ).show();
+                    }
+                    refreshLayout.setRefreshing(false);
+                }
+
+                @Override
+                public void onFailure(
+                        @NonNull Call<String> call,
+                        @NonNull Throwable t
+                ) {
+                    textView.setText(t.toString());
                     Toast.makeText(
                             getApplicationContext(),
-                            response.body(),
+                            t.toString(),
                             Toast.LENGTH_LONG
                     ).show();
+                    refreshLayout.setRefreshing(false);
                 }
-                refreshLayout.setRefreshing(false);
-            }
-
-            @Override
-            public void onFailure(
-                    @NonNull Call<String> call,
-                    @NonNull Throwable t
-            ) {
-                textView.setText(t.toString());
-                Toast.makeText(
-                        getApplicationContext(),
-                        t.toString(),
-                        Toast.LENGTH_LONG
-                ).show();
-                refreshLayout.setRefreshing(false);
-            }
+            });
         });
+
     }
 }
