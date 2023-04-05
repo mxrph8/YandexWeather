@@ -8,8 +8,14 @@ import retrofit2.http.Query;
 
 public interface APIServiceYandexWeather {
     @GET("/v2/informers")
-    @Headers("X-Yandex-API-Key:f0dc601e-4859-4f00-b48b-a1c96179447a")
-    Call<String> getDataGET(
+    Call<String> getGetCityWeather_v1(
+            @Header("X-Yandex-API-Key") String API_KEY,
+            @Query("lat") double lat,
+            @Query("lon") double lon);
+
+    @GET("/v2/informers")
+    @Headers("X-Yandex-API-Key:" + APIConfigYandexWeather.KEY)
+    Call<String> getGetCityWeather_v2(
             @Query("lat") double lat,
             @Query("lon") double lon);
 }
