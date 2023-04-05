@@ -3,12 +3,15 @@ package ru.shanin.yandexweather23.activity;
 import android.annotation.SuppressLint;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+
+import com.google.gson.Gson;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -18,6 +21,7 @@ import ru.shanin.yandexweather23.api.APIServiceConstructor;
 import ru.shanin.yandexweather23.api.config.APIConfigYandexWeather;
 import ru.shanin.yandexweather23.api.config.APIServiceYandexWeather;
 import ru.shanin.yandexweather23.data.City;
+import ru.shanin.yandexweather23.data.responsedata.ResponseData;
 
 public class Main extends AppCompatActivity {
     private TextView textView;
@@ -51,30 +55,32 @@ public class Main extends AppCompatActivity {
     private void loadData() {
         refreshLayout.setRefreshing(true);
         AsyncTask.execute(() -> {
-            Call<String> call_get = service.getGetCityWeather_v1(
-                    APIConfigYandexWeather.KEY,
+            Call<ResponseData> call_get = service.getGetCityWeather(
                     city.getLat(), city.getLon()
             );
-            call_get.enqueue(new Callback<String>() {
+            call_get.enqueue(new Callback<ResponseData>() {
                 @Override
                 public void onResponse(
-                        @NonNull Call<String> call,
-                        @NonNull Response<String> response
+                        @NonNull Call<ResponseData> call,
+                        @NonNull Response<ResponseData> response
                 ) {
                     if (response.body() != null) {
-                        textView.setText(response.body());
+                        String text = (new Gson()).toJson(response.body());
+                        textView.setText(text);
                         Toast.makeText(
                                 getApplicationContext(),
-                                response.body(),
+                                text,
                                 Toast.LENGTH_LONG
                         ).show();
+                        Log.d("ResponseData", text);
+
                     }
                     refreshLayout.setRefreshing(false);
                 }
 
                 @Override
                 public void onFailure(
-                        @NonNull Call<String> call,
+                        @NonNull Call<ResponseData> call,
                         @NonNull Throwable t
                 ) {
                     textView.setText(t.toString());
@@ -83,10 +89,10 @@ public class Main extends AppCompatActivity {
                             t.toString(),
                             Toast.LENGTH_LONG
                     ).show();
+                    Log.d("ResponseData", t.toString());
                     refreshLayout.setRefreshing(false);
                 }
             });
         });
-
     }
 }
