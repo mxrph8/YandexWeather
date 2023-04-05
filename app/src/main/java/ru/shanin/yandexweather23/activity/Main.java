@@ -36,6 +36,7 @@ public class Main extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         createService();
         initView();
+        loadData();
     }
 
     private void initView() {
@@ -73,7 +74,6 @@ public class Main extends AppCompatActivity {
                                 Toast.LENGTH_LONG
                         ).show();
                         Log.d("ResponseData", text);
-
                     }
                     refreshLayout.setRefreshing(false);
                 }
