@@ -9,7 +9,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class APIServiceConstructor {
 
-
     public static <T> T CreateService(Class<T> serviceClass, String URL) {
         HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
         loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);

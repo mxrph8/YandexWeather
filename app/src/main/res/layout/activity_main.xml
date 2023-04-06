@@ -1,20 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/refreshLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/refreshLayout"
+    android:padding="16dp"
     tools:context=".activity.Main">
 
-    <TextView
-        android:id="@+id/tw_weather"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:gravity="center"
-        tools:text="weather"/>
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/tw_weather"
+            android:textSize="24sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            tools:text="weather" />
+    </ScrollView>
+
+
 </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

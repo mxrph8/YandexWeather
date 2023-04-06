@@ -1,6 +1,5 @@
 package ru.shanin.yandexweather23.activity;
 
-import android.annotation.SuppressLint;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -29,7 +28,6 @@ public class Main extends AppCompatActivity {
     private APIServiceYandexWeather service;
     private City city;
 
-    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

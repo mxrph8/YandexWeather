@@ -11,13 +11,13 @@ public class Part {
     public String partName;
     @SerializedName("temp_min")
     @Expose
-    public int tempMin;
+    public double tempMin;
     @SerializedName("temp_avg")
     @Expose
-    public int tempAvg;
+    public double tempAvg;
     @SerializedName("temp_max")
     @Expose
-    public int tempMax;
+    public double tempMax;
     @SerializedName("wind_speed")
     @Expose
     public double windSpeed;
@@ -29,22 +29,22 @@ public class Part {
     public String windDir;
     @SerializedName("pressure_mm")
     @Expose
-    public int pressureMm;
+    public double pressureMm;
     @SerializedName("pressure_pa")
     @Expose
-    public int pressurePa;
+    public double pressurePa;
     @SerializedName("humidity")
     @Expose
-    public int humidity;
+    public double humidity;
     @SerializedName("prec_mm")
     @Expose
-    public int precMm;
+    public double precMm;
     @SerializedName("prec_prob")
     @Expose
-    public int precProb;
+    public double precProb;
     @SerializedName("prec_period")
     @Expose
-    public int precPeriod;
+    public double precPeriod;
     @SerializedName("icon")
     @Expose
     public String icon;
@@ -53,7 +53,7 @@ public class Part {
     public String condition;
     @SerializedName("feels_like")
     @Expose
-    public int feelsLike;
+    public double feelsLike;
     @SerializedName("daytime")
     @Expose
     public String daytime;
