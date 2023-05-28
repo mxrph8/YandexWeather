@@ -20,4 +20,16 @@ public class Info {
     public String toString() {
         return (new Gson()).toJson(this);
     }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public double getLat() {
+        return lat;
+    }
+
+    public double getLon() {
+        return lon;
+    }
 }

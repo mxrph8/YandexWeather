@@ -63,8 +63,38 @@ public class Main extends AppCompatActivity {
                         @NonNull Call<ResponseData> call,
                         @NonNull Response<ResponseData> response
                 ) {
+                    String tempznak;
+                    String dataznak = null;
+                    String veterspeed = "\uD83D\uDCA8";
+                    String vlajnost = "☂";
+                    String davlenieznak = "⎋";
                     if (response.body() != null) {
-                        String text = (new Gson()).toJson(response.body());
+                        ResponseData data = response.body();
+                        String TodayData = data.getForecast().getDate(); // дата
+                        double temp = data.getFact().getTemp(); // температура
+                        if (temp>15){
+                            tempznak = "☀";
+                        }
+                        else {
+                            tempznak = "☁";
+                        }
+                        int humidity = data.getFact().getHumidity(); // влажность
+                        double windSpeed = data.getFact().getWindSpeed(); // скорость ветра
+                        String season = data.getFact().getSeason(); // время года
+                        int davlenie = data.getFact().getPressureMm(); // время
+                        if (season.equals("spring")) {
+                            dataznak = "☘";
+                        }
+                        if (season.equals("winter")) {
+                            dataznak = "☃";
+                        }
+                        if (season.equals("summer")) {
+                            dataznak = "☼";
+                        }
+                        if (season.equals("autumn")) {
+                            dataznak = "✿";
+                        }
+                        String text = String.format("%s Дата: %s\n \n %s Атмосферное давление: %dмм рт.ст \n \n  %s Температура: %.1f°C\n \n %sВлажность: %d%%\n \n %sСкорость ветра: %.1f м/с", dataznak, TodayData, davlenieznak, davlenie, tempznak, temp,vlajnost, humidity, veterspeed, windSpeed);
                         textView.setText(text);
                         Toast.makeText(
                                 getApplicationContext(),

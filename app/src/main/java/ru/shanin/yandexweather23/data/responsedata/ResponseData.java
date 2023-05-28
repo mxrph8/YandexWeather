@@ -26,4 +26,24 @@ public class ResponseData {
     public String toString() {
         return (new Gson()).toJson(this);
     }
+
+    public int getNow() {
+        return now;
+    }
+
+    public String getNowDt() {
+        return nowDt;
+    }
+
+    public Info getInfo() {
+        return info;
+    }
+
+    public Fact getFact() {
+        return fact;
+    }
+
+    public Forecast getForecast() {
+        return forecast;
+    }
 }

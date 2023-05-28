@@ -53,4 +53,61 @@ public class Fact {
     public String toString() {
         return (new Gson()).toJson(this);
     }
+
+
+    public int getObsTime() {
+        return obsTime;
+    }
+
+    public int getTemp() {
+        return temp;
+    }
+
+    public int getFeelsLike() {
+        return feelsLike;
+    }
+
+    public String getIcon() {
+        return icon;
+    }
+
+    public String getCondition() {
+        return condition;
+    }
+
+    public double getWindSpeed() {
+        return windSpeed;
+    }
+
+    public String getWindDir() {
+        return windDir;
+    }
+
+    public int getPressureMm() {
+        return pressureMm;
+    }
+
+    public int getPressurePa() {
+        return pressurePa;
+    }
+
+    public int getHumidity() {
+        return humidity;
+    }
+
+    public String getDaytime() {
+        return daytime;
+    }
+
+    public boolean isPolar() {
+        return polar;
+    }
+
+    public String getSeason() {
+        return season;
+    }
+
+    public double getWindGust() {
+        return windGust;
+    }
 }

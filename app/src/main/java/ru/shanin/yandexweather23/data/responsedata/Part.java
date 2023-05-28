@@ -65,6 +65,78 @@ public class Part {
     public String toString() {
         return (new Gson()).toJson(this);
     }
+
+    public String getPartName() {
+        return partName;
+    }
+
+    public double getTempMin() {
+        return tempMin;
+    }
+
+    public double getTempAvg() {
+        return tempAvg;
+    }
+
+    public double getTempMax() {
+        return tempMax;
+    }
+
+    public double getWindSpeed() {
+        return windSpeed;
+    }
+
+    public double getWindGust() {
+        return windGust;
+    }
+
+    public String getWindDir() {
+        return windDir;
+    }
+
+    public double getPressureMm() {
+        return pressureMm;
+    }
+
+    public double getPressurePa() {
+        return pressurePa;
+    }
+
+    public double getHumidity() {
+        return humidity;
+    }
+
+    public double getPrecMm() {
+        return precMm;
+    }
+
+    public double getPrecProb() {
+        return precProb;
+    }
+
+    public double getPrecPeriod() {
+        return precPeriod;
+    }
+
+    public String getIcon() {
+        return icon;
+    }
+
+    public String getCondition() {
+        return condition;
+    }
+
+    public double getFeelsLike() {
+        return feelsLike;
+    }
+
+    public String getDaytime() {
+        return daytime;
+    }
+
+    public boolean isPolar() {
+        return polar;
+    }
 }
 
 

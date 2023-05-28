@@ -37,4 +37,36 @@ public class Forecast {
     public String toString() {
         return (new Gson()).toJson(this);
     }
+
+    public String getDate() {
+        return date;
+    }
+
+    public int getDateTs() {
+        return dateTs;
+    }
+
+    public int getWeek() {
+        return week;
+    }
+
+    public String getSunrise() {
+        return sunrise;
+    }
+
+    public String getSunset() {
+        return sunset;
+    }
+
+    public int getMoonCode() {
+        return moonCode;
+    }
+
+    public String getMoonText() {
+        return moonText;
+    }
+
+    public List<Part> getParts() {
+        return parts;
+    }
 }
